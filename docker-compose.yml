@@ -1,0 +1,7 @@
+services:
+  angular-app:
+    build: .
+    ports:
+      - "4300:4300"
+    environment:
+      API_URL: http://localhost:8081/
