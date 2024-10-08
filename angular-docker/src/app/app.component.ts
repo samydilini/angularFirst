@@ -11,7 +11,4 @@ import { RouterModule } from '@angular/router';
 })
 export class AppComponent {
   title = 'angular-docker';
-  navigateToAnotherPage() {
-    window.location.href = '/app-another';
-  }
 }

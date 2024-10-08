@@ -1,11 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, RouterTestingModule],
+      imports: [AppComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
@@ -29,4 +30,21 @@ describe('AppComponent', () => {
       'My, angular-docker'
     );
   });
+
+  it('should have router links', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    const firstLink = compiled.querySelector(
+      'a[routerLink="/first-component"]'
+    );
+    const secondLink = compiled.querySelector('a[routerLink="/app-another"]');
+
+    expect(firstLink).toBeTruthy();
+    expect(secondLink).toBeTruthy();
+  });
 });
+function provideActivatedRoute(): any {
+  throw new Error('Function not implemented.');
+}
